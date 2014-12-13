@@ -1,0 +1,21 @@
+background no
+out_to_console yes
+out_to_x no
+update_interval 1.0
+total_run_times 0
+use_spacer none
+
+TEXT
+# CPU
+^i($HOME/.wm/icons/cpu.xbm) \
+${if_match ${cpu} >= 30}\
+^fg(\#dc322f)\
+${endif}\
+${cpu}%^fg() | \
+\
+\
+V: ${exec $HOME/.wm/bin/conky_volume} | \
+N: ${downspeedf wlp3s0} / ${upspeedf wlp3s0} ${exec $HOME/.wm/bin/conky_network} | \
+B: ${exec $HOME/.wm/bin/conky_battery} | \
+${time} | \
+^fg(\#1793d0)^i($HOME/.wm/icons/arch.xbm)^fg() jesse@jpanganiban  \

@@ -1,0 +1,2 @@
+set editing-mode emacs
+"\C-x\C-r": re-read-init-file

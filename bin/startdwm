@@ -1,0 +1,12 @@
+while true; do
+  # Disable touchpad
+  synclient TouchpadOff=1
+
+  # Load Xresources
+  xrdb -merge ~/.Xresources
+  
+  # Run conky and stuff..
+  $HOME/.wm/bin/dzen_conky &
+  
+  dwm 2> ~/.dwm.log
+done

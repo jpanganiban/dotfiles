@@ -1,0 +1,134 @@
+"NeoBunde Scripts-----------------------------
+if has('vim_starting')
+  set nocompatible               " Be iMproved
+
+  " Required:
+  set runtimepath+=/home/jesse/.vim/bundle/neobundle.vim/
+endif
+
+" Required:
+call neobundle#begin(expand('/home/jesse/.vim/bundle'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" My Bundles here:
+NeoBundle 'Shougo/vimproc.vim', {
+\    'build': {
+\      'unix': 'make -f make_unix.mak'
+\    }
+\  }
+NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'Shougo/vimshell'
+NeoBundle 'yegappan/grep'
+NeoBundle 'wlangstroth/vim-racket'
+NeoBundle 'klen/python-mode'
+NeoBundle 'whatyouhide/vim-gotham'
+NeoBundle 'Junza/Spink'
+NeoBundle 'morhetz/gruvbox'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'jistr/vim-nerdtree-tabs'
+
+" Required:
+call neobundle#end() 
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+"End NeoBundle Scripts-------------------------
+
+
+"Base------------------------------------------
+let mapleader = ','
+"set fileencoding=utf-8
+set term=rxvt-unicode-256color
+set t_Co=256
+set t_ut=
+
+set wildmenu
+set hidden
+
+set hlsearch
+nnoremap n nzz
+nnoremap N Nzz
+
+set nobackup
+set nowritebackup
+set noswapfile
+
+set wiw=100
+
+set ea
+noremap <C-h> <C-W>h
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
+noremap <C-l> <C-W>l
+
+autocmd BufWritePost $MYVIMRC so %
+"End Base--------------------------------------
+
+"NERDTree--------------------------------------
+autocmd VimEnter * :NERDTreeToggle
+
+let g:NERDTreeDirArrows = 0
+let g:NERDTreeWinPos = "right"
+let g:NERDTreeWinSize = 40
+map <C-n> :NERDTreeTabsToggle<CR>
+
+autocmd WinEnter NERD_tree_* setlocal wiw=40
+"End NERDTree----------------------------------
+
+"Code------------------------------------------
+set nu
+syntax enable
+set background=dark
+
+colorscheme gruvbox
+
+autocmd WinEnter * if &modifiable | setlocal colorcolumn=60,80 | endif
+autocmd WinEnter * if &modifiable | setlocal wiw=100 | endif
+autocmd WinLeave * if &modifiable | setlocal colorcolumn= | endif
+autocmd WinEnter * wincmd =
+
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+
+set nowrap
+"End Code--------------------------------------
+
+"Python Mode-----------------------------------
+let g:pymode_folding = 0
+let g:pymode_rope = 0
+"End Python Mode-------------------------------
+
+""Unite----------------------------------------
+"noremap <C-n> :Unite -start-insert file file/new buffer<CR>
+"
+"autocmd FileType unite call s:unite_my_settings()
+"
+"function! s:unite_my_settings()
+"  imap <buffer><C-j> <Plug>(unite_select_next_line)
+"  imap <buffer><C-k> <Plug>(unite_select_previous_line)
+"  inoremap <silent><buffer><expr> <C-x> unite#do_action('split')
+"  inoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+"  inoremap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
+"endfunction
+""End Unite------------------------------------
+
+"Gruvbox---------------------------------------
+let g:gruvbox_bold = 1
+let g:gruvbox_italic = 1
+let g:gruvbox_italicize_comments = 1
+let g:gruvbox_contrast_dark = 'hard'
+"End Gruvbox-----------------------------------

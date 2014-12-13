@@ -1,0 +1,8 @@
+#!/bin/bash
+
+WIDTH=520
+HEIGHT=16
+
+killall conky dzen2 > /dev/null
+sleep 1
+{ conky -c $HOME/.wm/conkyrc | dzen2 -w $WIDTH -h $HEIGHT -ta r -x -$WIDTH; } > /dev/null

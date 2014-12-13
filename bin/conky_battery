@@ -1,0 +1,43 @@
+#!/usr/bin/env python
+import dzen2
+import colors
+
+
+def parse_battery_percentage(bp):
+    """Parse the given battery percentage such that this would only return
+    the number."""
+    return bp.split("%")[0]
+
+
+battery = dzen2.exec_([
+    'acpi',
+    '--battery'
+]).decode('unicode_escape')
+
+battery_info = (battery.split(', '))
+battery = int(parse_battery_percentage(battery_info[1].rstrip()))
+
+if battery >= 0 and battery < 5:
+    out = dzen2.fg(dzen2.i('$HOME/.wm/icons/battery0.xbm'), colors.red)
+if battery >= 5 and battery < 15:
+    out = dzen2.fg(dzen2.i('$HOME/.wm/icons/battery10.xbm'), colors.red)
+if battery >= 15 and battery < 30:
+    out = dzen2.fg(dzen2.i('$HOME/.wm/icons/battery20.xbm'), colors.orange)
+if battery >= 30 and battery < 40:
+    out = dzen2.i('$HOME/.wm/icons/battery30.xbm')
+if battery >= 40 and battery < 50:
+    out = dzen2.i('$HOME/.wm/icons/battery40.xbm')
+if battery >= 50 and battery < 60:
+    out = dzen2.i('$HOME/.wm/icons/battery50.xbm')
+if battery >= 50 and battery < 60:
+    out = dzen2.i('$HOME/.wm/icons/battery50.xbm')
+if battery >= 60 and battery < 70:
+    out = dzen2.i('$HOME/.wm/icons/battery60.xbm')
+if battery >= 70 and battery < 80:
+    out = dzen2.i('$HOME/.wm/icons/battery70.xbm')
+if battery >= 80 and battery < 90:
+    out = dzen2.i('$HOME/.wm/icons/battery80.xbm')
+if battery >= 90:
+    out = dzen2.i('$HOME/.wm/icons/battery90.xbm')
+
+print(dzen2.ca("$HOME/.wm/bin/runsomething", "%s %s" % (battery, out)))
