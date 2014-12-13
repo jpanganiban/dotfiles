@@ -79,7 +79,6 @@ autocmd BufWritePost $MYVIMRC so %
 
 "NERDTree--------------------------------------
 autocmd VimEnter * :NERDTreeToggle
-
 let g:NERDTreeDirArrows = 0
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeWinSize = 40
