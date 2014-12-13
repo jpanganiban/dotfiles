@@ -1,7 +1,4 @@
 while true; do
-  # Disable touchpad
-  synclient TouchpadOff=1
-
   # Load Xresources
   xrdb -merge ~/.Xresources
   

@@ -18,15 +18,15 @@ if strength == '':
 strength = int((float(strength) / 70.0) * 100)
 
 if strength >= 0 and strength < 20:
-    out = dzen2.i('$HOME/.wm/icons/wireless1.xbm')
+    out = dzen2.i('$HOME/icons/wireless1.xbm')
 if strength >= 20 and strength < 40:
-    out = dzen2.i('$HOME/.wm/icons/wireless2.xbm')
+    out = dzen2.i('$HOME/icons/wireless2.xbm')
 if strength >= 40 and strength < 60:
-    out = dzen2.i('$HOME/.wm/icons/wireless3.xbm')
+    out = dzen2.i('$HOME/icons/wireless3.xbm')
 if strength >= 60 and strength < 80:
-    out = dzen2.i('$HOME/.wm/icons/wireless4.xbm')
+    out = dzen2.i('$HOME/icons/wireless4.xbm')
 if strength >= 80 and strength <= 100:
-    out = dzen2.i('$HOME/.wm/icons/wireless5.xbm')
+    out = dzen2.i('$HOME/icons/wireless5.xbm')
 
 print(out)
 sys.exit(0)

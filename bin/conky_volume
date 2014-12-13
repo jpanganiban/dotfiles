@@ -7,17 +7,17 @@ volume = int(dzen2.exec_(['pamixer', '--get-volume']))
 mute = dzen2.exec_(['pamixer', '--get-mute']).decode('unicode_escape').lower() in ['true', 'True']
 
 if mute:
-    print(dzen2.fg(dzen2.i('$HOME/.wm/icons/volume0.xbm'), colors.red))
+    print(dzen2.fg(dzen2.i('$HOME/icons/volume0.xbm'), colors.red))
     sys.exit(0)
 
 if volume >= 0 and volume < 30:
-    out = dzen2.i('$HOME/.wm/icons/volume0.xbm')
+    out = dzen2.i('$HOME/icons/volume0.xbm')
 if volume >= 30 and volume < 60:
-    out = dzen2.i('$HOME/.wm/icons/volume25.xbm')
+    out = dzen2.i('$HOME/icons/volume25.xbm')
 if volume >= 60 and volume < 95:
-    out = dzen2.i('$HOME/.wm/icons/volume75.xbm')
+    out = dzen2.i('$HOME/icons/volume75.xbm')
 if volume >=  95:
-    out = dzen2.i('$HOME/.wm/icons/volume100.xbm')
+    out = dzen2.i('$HOME/icons/volume100.xbm')
 
 print(out)
 sys.exit(0)

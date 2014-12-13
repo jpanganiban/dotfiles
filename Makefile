@@ -49,6 +49,17 @@ setup-inputrc:
 	ln -s $(shell pwd)/inputrc ${HOME}/.inputrc
 	@echo "Inputrc installed."
 
+setup-conkyrc:
+	@echo "Copying conkyrc"
+	-rm -rf ${HOME}/conkyrc
+	ln -s $(shell pwd)/conkyrc ${HOME}/conkyrc
+	@echo "Installed conkyrc."
+
+setup-icons:
+	@echo "Copying icons"
+	-rm -rf ${HOME}/icons
+	ln -s $(shell pwd)/icons ${HOME}/icons
+	@echo "Installed icons."
 
 setup:
 	-make setup-bashrc
@@ -59,3 +70,5 @@ setup:
 	-make setup-thinkpad
 	-make setup-xresources
 	-make setup-inputrc
+	-make setup-conkyrc
+	-make setup-icons

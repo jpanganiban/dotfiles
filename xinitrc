@@ -20,5 +20,8 @@ xmodmap ~/.Xmodmap
 # Activate wallpaper
 feh --bg-center ~/.wallpaper
 
+# Disable touchpad
+synclient TouchpadOff=1
+
  Run dwm
-exec $HOME/.wm/bin/start${WM}
+exec $HOME/bin/start${WM}
