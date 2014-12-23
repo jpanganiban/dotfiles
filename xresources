@@ -3,9 +3,9 @@ URxvt*iso14755: false
 
 URxvt*foreground: White
 URxvt*background: #000000
-!URxvt*transparent: true
-!URxvt*tintColor: DimGray
-!URxvt*shading: 20
+URxvt*transparent: true
+URxvt*tintColor: DimGray
+URxvt*shading: 20
 URxvt*depth: 32
 
 URxvt*saveLines: 12000

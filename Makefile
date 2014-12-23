@@ -61,6 +61,12 @@ setup-icons:
 	ln -s $(shell pwd)/icons ${HOME}/icons
 	@echo "Installed icons."
 
+setup-mpd:
+	@echo "Installing mpd.conf"
+	-rm -rf ${HOME}/.mpd.conf
+	ln -s $(shell pwd)/mpd.conf ${HOME}/.mpd.conf
+	@echo "Installed mpd.conf."
+
 setup:
 	-make setup-bashrc
 	-make setup-binaries
@@ -72,3 +78,4 @@ setup:
 	-make setup-inputrc
 	-make setup-conkyrc
 	-make setup-icons
+	-make setup-mpd

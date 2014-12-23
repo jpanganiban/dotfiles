@@ -3,7 +3,7 @@ while true; do
   xrdb -merge ~/.Xresources
   
   # Run conky and stuff..
-  $HOME/.wm/bin/dzen_conky &
+  $HOME/bin/dzen_conky &
   
   dwm 2> ~/.dwm.log
 done
