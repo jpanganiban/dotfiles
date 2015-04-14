@@ -14,9 +14,6 @@ fi
 # Set default configurations
 : ${WM:="dwm"}
 
-# Set keybindings
-xmodmap ~/.Xmodmap
-
 # Activate wallpaper
 feh --bg-center ~/.wallpaper
 

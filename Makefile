@@ -67,6 +67,12 @@ setup-mpd:
 	ln -s $(shell pwd)/mpd.conf ${HOME}/.mpd.conf
 	@echo "Installed mpd.conf."
 
+setup-ncmpcpp:
+	@echo "Installing ncmpcpp configuration..."
+	-rm -rf ${HOME}/.ncmpcpp
+	ln -s $(shell pwd)/ncmpcpp ${HOME}/.ncmpcpp
+	@echo "Ncmpcpp configuration installed."
+
 setup:
 	-make setup-bashrc
 	-make setup-binaries
@@ -79,3 +85,4 @@ setup:
 	-make setup-conkyrc
 	-make setup-icons
 	-make setup-mpd
+	-make setup-ncmpcpp

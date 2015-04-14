@@ -36,6 +36,10 @@ NeoBundle 'Junza/Spink'
 NeoBundle 'morhetz/gruvbox'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'jistr/vim-nerdtree-tabs'
+NeoBundle 'vyshane/vydark-vim-color'
+NeoBundle 'godlygeek/csapprox'
+NeoBundle 'dhruvasagar/vim-table-mode'
+
 
 " Required:
 call neobundle#end() 
@@ -50,10 +54,15 @@ NeoBundleCheck
 
 "Base------------------------------------------
 let mapleader = ','
-"set fileencoding=utf-8
+set fileencoding=utf-8
 set term=rxvt-unicode-256color
 set t_Co=256
 set t_ut=
+set background=dark
+set modeline
+
+let g:CSApprox_loaded = 1
+colorscheme gruvbox
 
 set wildmenu
 set hidden
@@ -90,9 +99,6 @@ autocmd WinEnter NERD_tree_* setlocal wiw=40
 "Code------------------------------------------
 set nu
 syntax enable
-set background=dark
-
-colorscheme gruvbox
 
 autocmd WinEnter * if &modifiable | setlocal colorcolumn=60,80 | endif
 autocmd WinEnter * if &modifiable | setlocal wiw=100 | endif
@@ -110,20 +116,6 @@ set nowrap
 let g:pymode_folding = 0
 let g:pymode_rope = 0
 "End Python Mode-------------------------------
-
-""Unite----------------------------------------
-"noremap <C-n> :Unite -start-insert file file/new buffer<CR>
-"
-"autocmd FileType unite call s:unite_my_settings()
-"
-"function! s:unite_my_settings()
-"  imap <buffer><C-j> <Plug>(unite_select_next_line)
-"  imap <buffer><C-k> <Plug>(unite_select_previous_line)
-"  inoremap <silent><buffer><expr> <C-x> unite#do_action('split')
-"  inoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-"  inoremap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
-"endfunction
-""End Unite------------------------------------
 
 "Gruvbox---------------------------------------
 let g:gruvbox_bold = 1

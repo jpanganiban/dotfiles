@@ -1,0 +1,4 @@
+key_up = 'k'
+key_down = 'j'
+key_left = 'h'
+key_right = 'l'

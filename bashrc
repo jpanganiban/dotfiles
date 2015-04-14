@@ -4,12 +4,13 @@
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-export LC_ALL=
+#export LC_ALL=
 PS1='[\u@\h \w]\$ '
 export PATH=$PATH:$HOME/bin
 export WORKSPACE=$HOME/workspace
-export EDITOR=vim
+export EDITOR=emacs
 
+alias emacs='emacs -nw'
 alias ls='ls --color=auto'
 alias l='ls'
 alias la='ls -A'

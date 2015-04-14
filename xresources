@@ -1,18 +1,15 @@
 URxvt*termName: rxvt-unicode-256color
 URxvt*iso14755: false
-
 URxvt*foreground: White
 URxvt*background: #000000
 URxvt*transparent: true
 URxvt*tintColor: DimGray
 URxvt*shading: 20
 URxvt*depth: 32
-
 URxvt*saveLines: 12000
 URxvt*scrollBar: false
 URxvt*scrollBar_right: false
 URxvt*scrollstyle: rxvt
-
 URxvt*font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true
 URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
 URxvt*italicFont: xft:DejaVu Sans Mono:italic:pixelsize=12:antialias=true:hinting=true
