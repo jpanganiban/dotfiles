@@ -10,10 +10,10 @@ URxvt*saveLines: 12000
 URxvt*scrollBar: false
 URxvt*scrollBar_right: false
 URxvt*scrollstyle: rxvt
-URxvt*font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true
-URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
-URxvt*italicFont: xft:DejaVu Sans Mono:italic:pixelsize=12:antialias=true:hinting=true
-URxvt*bolditalicFont: xft:DejaVu Sans Mono:bold:italic:pixelsize=12:antialias=true:hinting=true
+URxvt*font: xft:DejaVu Sans Mono:pixelsize=13:antialias=true:hinting=true
+URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=13:antialias=true:hinting=true
+URxvt*italicFont: xft:DejaVu Sans Mono:italic:pixelsize=13:antialias=true:hinting=true
+URxvt*bolditalicFont: xft:DejaVu Sans Mono:bold:italic:pixelsize=13:antialias=true:hinting=true
 
 !  black
 URxvt*color0  : #2E3436

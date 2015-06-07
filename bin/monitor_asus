@@ -1,0 +1,2 @@
+#!/bin/bash
+xrandr --output DP2 --mode 2560x1440 --primary --output eDP1 --off

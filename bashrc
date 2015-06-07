@@ -8,7 +8,9 @@
 PS1='[\u@\h \w]\$ '
 export PATH=$PATH:$HOME/bin
 export WORKSPACE=$HOME/workspace
-export EDITOR=emacs
+export EDITOR=vim
+export XDG_MUSIC_DIR=$HOME/music
+export XDG_DATA_DIR=$HOME/data
 
 alias emacs='emacs -nw'
 alias ls='ls --color=auto'
@@ -17,6 +19,7 @@ alias la='ls -A'
 #alias vim='TERM=screen-256color vim'
 alias vi='vim'
 #export TERM='rxvt-unicode-256color'
+alias fig='docker-compose'
 
 # Autocomplete
 function _work {
