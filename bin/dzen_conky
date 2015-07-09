@@ -5,4 +5,4 @@ HEIGHT=13
 
 killall conky dzen2 > /dev/null
 sleep 1
-{ conky -c $HOME/conkyrc | dzen2 -ta c -y -$HEIGHT -h 19; } > /dev/null
+{ conky -c $HOME/conkyrc | dzen2 -ta c -y $HEIGHT -h 19; } > /dev/null
