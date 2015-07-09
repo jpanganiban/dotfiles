@@ -238,5 +238,5 @@ URxvt*color15 : #EEEEEC
 *URxvt*keysym.S-M-C-Left:	\033[1;8D
 
 dzen2.font: -*-DejaVu Sans Mono-*-*-*-*-9-*-*-*-*-*-*-*
-dzen2.foreground: #222222
-dzen2.background: #ffffff
+dzen2.foreground: #eeeeee
+dzen2.background: #222222

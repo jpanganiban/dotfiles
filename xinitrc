@@ -18,7 +18,13 @@ fi
 feh --bg-center ~/.wallpaper
 
 # Disable touchpad
-synclient TouchpadOff=1
+#synclient TouchpadOff=1
 
- Run dwm
+setxkbmap -option "ctrl:nocaps"
+
+# Load Xresources
+xrdb -merge ~/.Xresources
+
+# Run dwm
 exec $HOME/bin/start${WM}
+#exec bspwm
