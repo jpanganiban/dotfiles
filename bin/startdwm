@@ -1,4 +1,4 @@
 # Run conky and stuff..
-$HOME/bin/dzen_conky &
+$HOME/bin/dzen_conky 2> ~/.logs/dzen_conky.log &
 
-dwm 2> ~/.dwm.log
+dwm 2> ~/.logs/dwm.log

@@ -4,22 +4,25 @@
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-#export LC_ALL=
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 PS1='[\u@\h \w]\$ '
 export PATH=$PATH:$HOME/bin
 export WORKSPACE=$HOME/workspace
 export EDITOR=vim
 export XDG_MUSIC_DIR=$HOME/music
 export XDG_DATA_DIR=$HOME/data
+export XDG_CONFIG_HOME=$HOME/.config
 
 alias emacs='emacs -nw'
 alias ls='ls --color=auto'
 alias l='ls'
 alias la='ls -A'
-#alias vim='TERM=screen-256color vim'
 alias vi='vim'
-#export TERM='rxvt-unicode-256color'
 alias fig='docker-compose'
+
+export TERM=rxvt-unicode-256color
+[ -n "$TMUX" ] && export TERM=screen-256color
 
 # Autocomplete
 function _work {
@@ -40,3 +43,5 @@ function work {
   cd $WORKSPACE
 }
 complete -F _work work
+
+source ~/.vim/bundle/gruvbox/gruvbox_256palette.sh

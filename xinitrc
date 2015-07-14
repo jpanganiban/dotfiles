@@ -27,4 +27,4 @@ xrdb -merge ~/.Xresources
 
 # Run dwm
 exec $HOME/bin/start${WM}
-#exec bspwm
+

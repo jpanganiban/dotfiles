@@ -872,6 +872,8 @@ expose(XEvent *e) {
 
 void
 focus(Client *c) {
+	XWindowChanges wc;
+
 	if(!c || !ISVISIBLE(c))
 		for(c = selmon->stack; c && !ISVISIBLE(c); c = c->snext);
 	/* was if(selmon->sel) */
@@ -886,6 +888,11 @@ focus(Client *c) {
 		attachstack(c);
 		grabbuttons(c, True);
 		XSetWindowBorder(dpy, c->win, dc.sel[ColBorder]);
+		if(!c->isfloating) {
+			wc.sibling = selmon->barwin;
+			wc.stack_mode = Below;
+			XConfigureWindow(dpy, c->win, CWSibling | CWStackMode, &wc);
+		}
 		setfocus(c);
 	}
 	else
@@ -1230,7 +1237,7 @@ monocle(Monitor *m) {
 	if(n > 0) /* override layout symbol */
 		snprintf(m->ltsymbol, sizeof m->ltsymbol, "[%d]", n);
 	for(c = nexttiled(m->clients); c; c = nexttiled(c->next))
-		resize(c, m->wx, m->wy, m->ww - 2 * c->bw, m->wh - 2 * c->bw, False);
+		resize(c, m->wx - c->bw, m->wy, m->ww, m->wh, False);
 }
 
 void
@@ -1750,13 +1757,16 @@ tile(Monitor *m) {
 	for(i = my = ty = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
 		if(i < m->nmaster) {
 			h = (m->wh - my) / (MIN(n, m->nmaster) - i);
-			resize(c, m->wx, m->wy + my, mw - (2*c->bw), h - (2*c->bw), False);
-			my += HEIGHT(c);
+			if(n == 1)
+				resize(c, m->wx - c->bw, m->wy, m->ww, m->wh, False);
+			else
+				resize(c, m->wx - c->bw, m->wy + my, mw - c->bw, h - c->bw, False);
+			my += HEIGHT(c) - c->bw;
 		}
 		else {
 			h = (m->wh - ty) / (n - i);
-			resize(c, m->wx + mw, m->wy + ty, m->ww - mw - (2*c->bw), h - (2*c->bw), False);
-			ty += HEIGHT(c);
+			resize(c, m->wx + mw - c->bw, m->wy + ty, m->ww - mw, h - c->bw, False);
+			ty += HEIGHT(c) - c->bw;
 		}
 }
 
@@ -1895,8 +1905,10 @@ updatebarpos(Monitor *m) {
 	if(m->showbar) {
 		m->wh -= bh;
         m->wh -= marginbottom;
-        if(!m->topbar)
-            m->wy += marginbottom;
+        m->wh -= margintop;
+        m->wy += marginbottom;
+        m->wy += margintop;
+        //if(!m->topbar)
 		m->by = m->topbar ? m->wy : m->wy + m->wh;
 		m->wy = m->topbar ? m->wy + bh : m->wy;
 	}

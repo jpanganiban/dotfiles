@@ -39,6 +39,9 @@ NeoBundle 'jistr/vim-nerdtree-tabs'
 NeoBundle 'vyshane/vydark-vim-color'
 NeoBundle 'godlygeek/csapprox'
 NeoBundle 'dhruvasagar/vim-table-mode'
+NeoBundle 'junegunn/goyo.vim'
+NeoBundle 'fent/vim-frozen'
+NeoBundle 'junegunn/limelight.vim'
 
 
 " Required:
@@ -50,6 +53,13 @@ filetype plugin indent on
 " this will conveniently prompt you to install them.
 NeoBundleCheck
 "End NeoBundle Scripts-------------------------
+
+"Gruvbox---------------------------------------
+let g:gruvbox_bold = 1
+let g:gruvbox_italic = 1
+let g:gruvbox_italicize_comments = 1
+let g:gruvbox_contrast_dark = 'hard'
+"End Gruvbox-----------------------------------
 
 
 "Base------------------------------------------
@@ -86,6 +96,42 @@ noremap <C-l> <C-W>l
 autocmd BufWritePost $MYVIMRC so %
 "End Base--------------------------------------
 
+"Limelight-------------------------------------
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+
+let g:limelight_conceal_guifg = 'DarkGray'
+let g:limelight_conceal_guifg = '#777777'
+
+let g:limelight_default_coefficient = 0.5
+
+let g:limelight_paragraph_span = 1
+"End Limelight---------------------------------
+
+"Goyo------------------------------------------
+noremap <C-m> :Goyo<CR>
+
+function! s:goyo_enter()
+  silent !tmux set status off
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  setlocal colorcolumn=
+  Limelight
+endfunction
+
+function! s:goyo_leave()
+  silent !tmux set status on
+  set showmode
+  set showcmd
+  set scrolloff=5
+  Limelight!
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+"End Goyo--------------------------------------
+
 "NERDTree--------------------------------------
 autocmd VimEnter * :NERDTreeToggle
 let g:NERDTreeDirArrows = 0
@@ -116,10 +162,3 @@ set nowrap
 let g:pymode_folding = 0
 let g:pymode_rope = 0
 "End Python Mode-------------------------------
-
-"Gruvbox---------------------------------------
-let g:gruvbox_bold = 1
-let g:gruvbox_italic = 1
-let g:gruvbox_italicize_comments = 1
-let g:gruvbox_contrast_dark = 'hard'
-"End Gruvbox-----------------------------------

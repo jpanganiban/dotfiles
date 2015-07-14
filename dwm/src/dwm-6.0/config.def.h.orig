@@ -1,41 +1,39 @@
 /* See LICENSE file for copyright and license details. */
-#include <X11/XF86keysym.h>
 
 /* appearance */
-static const char font[]            = "-*-DejaVu Sans Mono-medium-r-*-*-9-*-*-*-*-*-*-*";
+static const char font[]            = "-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*";
 static const char normbordercolor[] = "#444444";
 static const char normbgcolor[]     = "#222222";
 static const char normfgcolor[]     = "#bbbbbb";
-static const char selbordercolor[]  = "#222222";
-static const char selbgcolor[]      = "#222222";
+static const char selbordercolor[]  = "#005577";
+static const char selbgcolor[]      = "#005577";
 static const char selfgcolor[]      = "#eeeeee";
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int gappx     = 1;        /* gap pixel between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
-static const unsigned int marginbottom = 0;
-static const unsigned int margintop = 18;
-static const unsigned int gappx = 3;
+static const unsigned int bottommargin = 20;    /* Margin at the bottom for another bar */
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
-	/* class      instance    title       tags mask     iscentered    isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            False,        True,        -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       False,        False,       -1 },
+	/* class      instance    title       tags mask     isfloating   monitor */
+	{ "Gimp",     NULL,       NULL,       0,            True,        -1 },
+	{ "Firefox",  NULL,       NULL,       1 << 8,       False,       -1 },
 };
 
 /* layout(s) */
 static const float mfact      = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster      = 1;    /* number of clients in master area */
-static const Bool resizehints = False; /* True means respect size hints in tiled resizals */
+static const Bool resizehints = True; /* True means respect size hints in tiled resizals */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
-	{ "[M]",      monocle },
 	{ "><>",      NULL },    /* no layout function means floating behavior */
+	{ "[M]",      monocle },
 };
 
 /* key definitions */
@@ -51,24 +49,10 @@ static const Layout layouts[] = {
 
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "urxvt", NULL };
-
-/* volume commands */
-static const char *volupcmd[] = {"pamixer", "--increase", "5", NULL};
-static const char *voldowncmd[] = {"pamixer", "--decrease", "5", NULL};
-static const char *volmutecmd[] = {"pamixer", "--toggle-mute", NULL};
-
-/* backlight commands */
-static const char *backlightinccmd[] = {"xbacklight", "-inc", "10", NULL};
-static const char *backlightdeccmd[] = {"xbacklight", "-dec", "10", NULL};
+static const char *termcmd[]  = { "uxterm", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ 0,				XF86XK_AudioRaiseVolume,	spawn,	{.v = volupcmd} },
-	{ 0,				XF86XK_AudioLowerVolume,	spawn,	{.v = voldowncmd} },
-	{ 0,				XF86XK_AudioMute,		spawn,	{.v = volmutecmd} },
-        { 0,                            XF86XK_MonBrightnessUp,         spawn,  {.v = backlightinccmd} },
-        { 0,                            XF86XK_MonBrightnessDown,       spawn,  {.v = backlightdeccmd} },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
@@ -82,8 +66,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },

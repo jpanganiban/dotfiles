@@ -1,4 +1,4 @@
-URxvt*termName: rxvt-unicode-256color
+URxvt*termName: xterm-256color
 URxvt*iso14755: false
 URxvt*foreground: White
 URxvt*background: #000000

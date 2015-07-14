@@ -1,0 +1,5 @@
+# Run conky and stuff..
+#$HOME/bin/dzen_conky &
+
+sxhkd &
+bspwm 2> ~/.bspwm.log

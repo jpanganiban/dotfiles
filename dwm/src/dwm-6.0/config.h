@@ -6,22 +6,24 @@ static const char font[]            = "-*-DejaVu Sans Mono-medium-r-*-*-9-*-*-*-
 static const char normbordercolor[] = "#444444";
 static const char normbgcolor[]     = "#222222";
 static const char normfgcolor[]     = "#bbbbbb";
-static const char selbordercolor[]  = "#005577";
+static const char selbordercolor[]  = "#222222";
 static const char selbgcolor[]      = "#222222";
 static const char selfgcolor[]      = "#eeeeee";
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
-static const unsigned int marginbottom = 19;
+static const unsigned int marginbottom = 0;
+static const unsigned int margintop = 18;
+static const unsigned int gappx = 3;
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            True,        -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       False,       -1 },
+	/* class      instance    title       tags mask     iscentered    isfloating   monitor */
+	{ "Gimp",     NULL,       NULL,       0,            False,        True,        -1 },
+	{ "Firefox",  NULL,       NULL,       1 << 8,       False,        False,       -1 },
 };
 
 /* layout(s) */
@@ -56,11 +58,17 @@ static const char *volupcmd[] = {"pamixer", "--increase", "5", NULL};
 static const char *voldowncmd[] = {"pamixer", "--decrease", "5", NULL};
 static const char *volmutecmd[] = {"pamixer", "--toggle-mute", NULL};
 
+/* backlight commands */
+static const char *backlightinccmd[] = {"xbacklight", "-inc", "10", NULL};
+static const char *backlightdeccmd[] = {"xbacklight", "-dec", "10", NULL};
+
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ 0,				XF86XK_AudioRaiseVolume,	spawn,	{.v = volupcmd} },
 	{ 0,				XF86XK_AudioLowerVolume,	spawn,	{.v = voldowncmd} },
 	{ 0,				XF86XK_AudioMute,		spawn,	{.v = volmutecmd} },
+        { 0,                            XF86XK_MonBrightnessUp,         spawn,  {.v = backlightinccmd} },
+        { 0,                            XF86XK_MonBrightnessDown,       spawn,  {.v = backlightdeccmd} },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
