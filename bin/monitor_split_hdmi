@@ -1,0 +1,3 @@
+#!/bin/bash
+xrandr --output HDMI1 --mode 1920x1080 --primary --output LVDS1 --right-of HDMI1 --mode 1366x768
+startup_common

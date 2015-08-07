@@ -1,0 +1,3 @@
+#!/bin/bash
+xrandr --output LVDS1 --mode 1366x768 --primary --output DP1 --left-of LVDS1 --mode 2560x1440
+startup_common

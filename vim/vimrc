@@ -42,6 +42,7 @@ NeoBundle 'dhruvasagar/vim-table-mode'
 NeoBundle 'junegunn/goyo.vim'
 NeoBundle 'fent/vim-frozen'
 NeoBundle 'junegunn/limelight.vim'
+NeoBundle 'tpope/vim-surround'
 
 
 " Required:
@@ -63,7 +64,6 @@ let g:gruvbox_contrast_dark = 'hard'
 
 
 "Base------------------------------------------
-let mapleader = ','
 set fileencoding=utf-8
 set term=rxvt-unicode-256color
 set t_Co=256
@@ -78,8 +78,6 @@ set wildmenu
 set hidden
 
 set hlsearch
-nnoremap n nzz
-nnoremap N Nzz
 
 set nobackup
 set nowritebackup
@@ -88,10 +86,6 @@ set noswapfile
 set wiw=100
 
 set ea
-noremap <C-h> <C-W>h
-noremap <C-j> <C-W>j
-noremap <C-k> <C-W>k
-noremap <C-l> <C-W>l
 
 autocmd BufWritePost $MYVIMRC so %
 "End Base--------------------------------------
@@ -109,10 +103,10 @@ let g:limelight_paragraph_span = 1
 "End Limelight---------------------------------
 
 "Goyo------------------------------------------
-noremap <C-m> :Goyo<CR>
-
 function! s:goyo_enter()
-  silent !tmux set status off
+  if exists('$TMUX')
+    silent !tmux set status off
+  endif
   set noshowmode
   set noshowcmd
   set scrolloff=999
@@ -121,7 +115,9 @@ function! s:goyo_enter()
 endfunction
 
 function! s:goyo_leave()
-  silent !tmux set status on
+  if exists('$TMUX')
+    silent !tmux set status on
+  endif
   set showmode
   set showcmd
   set scrolloff=5
@@ -137,7 +133,6 @@ autocmd VimEnter * :NERDTreeToggle
 let g:NERDTreeDirArrows = 0
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeWinSize = 40
-map <C-n> :NERDTreeTabsToggle<CR>
 
 autocmd WinEnter NERD_tree_* setlocal wiw=40
 "End NERDTree----------------------------------
@@ -162,3 +157,18 @@ set nowrap
 let g:pymode_folding = 0
 let g:pymode_rope = 0
 "End Python Mode-------------------------------
+
+"Key Bindings----------------------------------
+let mapleader = "\<Space>"
+
+nnoremap n nzz
+nnoremap N Nzz
+
+noremap <C-h> <C-W>h
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
+noremap <C-l> <C-W>l
+
+nnoremap <Leader>m :Goyo 75%+25%x75%+25%<CR>
+nnoremap <Leader>n :NERDTreeTabsToggle<CR>
+"End Key Bindings------------------------------

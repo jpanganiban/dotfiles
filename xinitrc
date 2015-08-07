@@ -14,17 +14,7 @@ fi
 # Set default configurations
 : ${WM:="dwm"}
 
-# Activate wallpaper
-feh --bg-center ~/.wallpaper
-
-# Disable touchpad
-#synclient TouchpadOff=1
-
-setxkbmap -option "ctrl:nocaps"
-
-# Load Xresources
-xrdb -merge ~/.Xresources
+startup_common &
 
 # Run dwm
 exec $HOME/bin/start${WM}
-

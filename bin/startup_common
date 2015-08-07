@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Activate wallpaper
+feh --bg-center ~/.wallpaper
+
+# Disable touchpad
+#synclient TouchpadOff=1
+
+setxkbmap -option "ctrl:nocaps"
+
+# Load Xresources
+xrdb -merge ~/.Xresources
+
+dzen_conky
