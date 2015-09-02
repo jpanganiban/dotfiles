@@ -20,6 +20,7 @@ alias l='ls'
 alias la='ls -A'
 alias vi='vim'
 alias fig='docker-compose'
+alias chromium='chromium --allow-running-insecure-content'
 
 export TERM=rxvt-unicode-256color
 [ -n "$TMUX" ] && export TERM=screen-256color
